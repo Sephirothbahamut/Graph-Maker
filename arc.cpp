@@ -66,6 +66,10 @@ void graph::arc::update_position()
 		sprite[6].position.x = sprite[7].position.x - (size * cos(th + angle_variation));
 		sprite[6].position.y = sprite[7].position.y - (size * sin(th + angle_variation));
 		}
+
+	float avg_x = (fx + tx) / 2 - 4;
+	float avg_y = (fy + ty) / 2 - 4;
+	selectable_sprite.setPosition(avg_x, avg_y);
 	}
 
 void graph::arc::update_color()
@@ -89,6 +93,12 @@ void graph::arc::update_color()
 		sprite[6].color = sprite[7].color = to->sprite.getOutlineColor();
 		sprite[6].color.a = 0;
 		}
+
+
+	selectable_sprite.setFillColor(sf::Color(255, 255, 255, 180));
+	selectable_sprite.setOutlineColor(sf::Color(255, 255, 255, 255));
+	selectable_sprite.setOutlineThickness(2);
+
 	}
 
 graph::arc::arc(graph * owner, node* from, node* to, bool directed)
@@ -119,6 +129,9 @@ graph::arc::arc(graph * owner, node* from, node* to, bool directed)
 		}
 
 	set_style(owner->arc_style);
+
+	selectable_sprite.setSize(sf::Vector2f(8, 8));
+
 	update_position();
 	update_color();
 

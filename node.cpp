@@ -145,7 +145,12 @@ void graph::node::set_color(sf::Color fill, sf::Color outline)
 
 void graph::node::set_position(float x, float y)
 	{
-	sprite.setPosition(x, y);
+	set_position(sf::Vector2f(x, y));
+	}
+
+void graph::node::set_position(sf::Vector2f pos)
+	{
+	sprite.setPosition(pos);
 	for (auto a : list_arc_from)
 		{
 		a->update_position();

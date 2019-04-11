@@ -1,22 +1,2 @@
-﻿  window_mode.cpp
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(91): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(92): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(93): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(94): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(105): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(106): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(107): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(108): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(137): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(138): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(143): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(144): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(173): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(174): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(179): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\window_mode.cpp(180): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  GraphMaker 2.cpp
-  Generating Code...
+﻿  arc.cpp
   GraphMaker 2.vcxproj -> C:\Users\Sephirothbahamut\Documents\Programming\VS\Projects\SFML\GraphMaker 2\Debug\GraphMaker 2.exe

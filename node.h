@@ -39,6 +39,7 @@ class graph::node
 
 		void set_color(sf::Color fill, sf::Color outline);
 		void set_position(float x, float y);
+		void set_position(sf::Vector2f pos);
 		void set_size(float size);
 		void change_size(float change);
 

@@ -25,6 +25,8 @@ class graph::arc
 
 	public:
 		sf::VertexArray sprite;
+		sf::RectangleShape selectable_sprite;
+		bool selected = false;
 
 		void set_directed(bool directed);
 		void swap();
