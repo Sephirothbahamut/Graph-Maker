@@ -248,6 +248,12 @@ void graph::arc::set_style(arc_style_type style)
 	update_color();
 	}
 
+void graph::arc::draw(sf::RenderTarget & target, sf::RenderStates states) const
+	{
+	target.draw(sprite);
+	target.draw(selectable_sprite);
+	}
+
 // User variables
 
 //personal

@@ -23,6 +23,12 @@ graph::~graph()
 		}
 	}
 
+void graph::draw(sf::RenderTarget & target, sf::RenderStates states) const
+	{
+	for (auto a : list_arc) { target.draw(*a); }
+	for (auto n : list_node) { target.draw(*n); }
+	}
+
 graph::node* graph::add_node()
 	{
 #ifdef DEBUG_GRAPH_BUILDING

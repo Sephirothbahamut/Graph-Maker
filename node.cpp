@@ -181,6 +181,22 @@ void graph::node::change_size(float change)
 	set_size(sprite.getRadius() + change);
 	}
 
+void graph::node::draw(sf::RenderTarget & target, sf::RenderStates states) const
+	{
+	target.draw(sprite);
+	float width = 0;
+	sf::Text(std::to_string(unsigned int(this)), sf::Font);
+	for (auto v : shared_vars)
+		{
+
+		}
+	for (auto v : vars)
+		{
+
+		}
+	sf::RectangleShape box();
+	}
+
 //personal
 bool graph::node::chk(std::string name)
 	{

@@ -764,15 +764,7 @@ void window_mode::draw()
 
 	window.draw(draw_grid);
 
-	for (auto a : g->get_arcs())
-		{
-		window.draw(a->sprite);
-		window.draw(a->selectable_sprite);
-		}
-	for (auto n : g->get_nodes())
-		{
-		window.draw(n->sprite);
-		}
+	window.draw(*g);
 
 	(this->*action_draw)();
 

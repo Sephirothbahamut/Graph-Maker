@@ -26,7 +26,7 @@ using std::endl;
 	std::cout
 #endif
 
-class graph
+class graph : public sf::Drawable
 	{
 	public:
 
@@ -57,6 +57,8 @@ class graph
 	public:
 		graph();
 		~graph();
+
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		node* add_node();
 		void remove_node(node* n);

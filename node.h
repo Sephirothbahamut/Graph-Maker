@@ -2,7 +2,7 @@
 #include "graph.h"
 
 
-class graph::node
+class graph::node : public sf::Drawable
 	{
 	friend graph;
 
@@ -29,6 +29,7 @@ class graph::node
 		std::vector<node*> iteration_vector_node;
 		bool iteration_invalidated = true;
 
+
 	public:
 		sf::CircleShape sprite;
 		bool selected = false;
@@ -41,7 +42,8 @@ class graph::node
 		void set_position(float x, float y);
 		void set_position(sf::Vector2f pos);
 		void set_size(float size);
-		void change_size(float change);
+		void change_size(float change); 
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		// User variables
 		//personal

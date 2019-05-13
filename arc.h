@@ -1,7 +1,7 @@
 #pragma once
 #include "graph.h"
 
-class graph::arc
+class graph::arc : public sf::Drawable
 	{
 	friend graph;
 
@@ -23,6 +23,7 @@ class graph::arc
 		arc(graph * owner, node* from, node* to, bool directed);
 		~arc();
 
+
 	public:
 		sf::VertexArray sprite;
 		sf::RectangleShape selectable_sprite;
@@ -36,6 +37,7 @@ class graph::arc
 		bool get_directed();
 
 		void set_style(graph::arc_style_type style);
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		// User variables
 		//personal
