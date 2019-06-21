@@ -1,0 +1,70 @@
+/*! \page page_manual_usage_registration_tempspec Registering tempspecs
+<p>Before you can register a template specialization for a container, you must first register the content class itself.</p>
+<p>You can only register template specializations for these containers:</p>
+- vector
+- list
+- deque
+- set
+- unordered_set
+<p>map and unordered_map are not available because they take 2 template parameters and that would require partial template specialization which angelscript probably doesnt support.</p>
+\n
+
+<p>The containers require certain operators to be implemented before they can be specialized:</p>
+- vector
+	- operator equals
+	- operator less
+- list
+	- operator equals
+	- operator less
+- deque
+	- operator equals
+	- operator less
+- set
+	- operator less
+- unordered_set
+	- operator equals
+	- pseudo-operator hash
+
+<p>Hash is not an operator, but a functor by name of aatc::hash::hashfunctor</p>
+See: \ref page_manual_usage_registration_hash for all your hashing needs
+
+\n
+<p>The tempspec registration functions work like this:</p>
+\code{.cpp}
+#include "aatc_container_vector.hpp"
+
+aatc::container::tempspec::vector<MyCppClass>::Register(engine, "MyCppClass_name_in_script");
+\endcode
+\n
+<p>Warning: You should not register MyCppClass* as a tempspec. If you want to store handles, you should use a templated container instead.</p>
+\n
+\par Examples
+<p>Registering a template specialization of the class "myVec3" for the containers vector and list:</p>
+\code{.cpp}
+//include the container headers that you will be needing
+#include "aatc_container_vector.hpp"
+#include "aatc_container_list.hpp"
+
+class myVec3{
+public:
+	float x,y,z;
+	myVec3(float x,float y,float z);
+	
+	bool operator==(const myVec3& other);
+	int angelscript_opCmp(const myVec3& other);
+};
+
+void your_aatc_tempspec_registration(asIScriptEngine* engine){
+	aatc::RegisterAllContainers(engine);
+	
+	engine->RegisterObjectType("myVec3", ...);
+	engine->RegisterObjectMethod("myVec3", "bool opEquals(const myVec3 &in)", asMETHOD(myVec3,operator==),asCALL_THISCALL);
+	engine->RegisterObjectMethod("myVec3", "int opCmp(const myVec3 &in)",  asMETHOD(myVec3,angelscript_opCmp),asCALL_THISCALL);
+	
+	aatc::container::tempspec::vector<myVec3>::Register(engine, "myVec3");
+	aatc::container::tempspec::list<myVec3>::Register(engine, "myVec3");
+}
+\endcode
+
+\n
+*/

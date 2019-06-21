@@ -41,11 +41,29 @@ void window_mode::deselect(graph::node * n)
 	n->set_color(color_node_idle, color_node_idle_outline);
 	}
 
+void window_mode::select(graph::arc * a)
+	{
+	selected_arcs.insert(a);
+	a->selected = true;
+	a->set_color(color_node_selected, color_node_selected_outline);
+	}
+
+void window_mode::deselect(graph::arc * a)
+	{
+	selected_arcs.erase(a);
+	a->selected = false;
+	a->set_color(color_node_idle, color_node_idle_outline);
+	}
+
 void window_mode::deselect_all()
 	{
 	while (!selected_nodes.empty())
 		{
 		deselect(*selected_nodes.begin());
+		}
+	while (!selected_arcs.empty())
+		{
+		deselect(*selected_arcs.begin());
 		}
 	}
 
@@ -57,9 +75,9 @@ void window_mode::set_select_coords(int x, int y)
 	select_y2 = y;
 	}
 
-graph::node* window_mode::get_hover(int x, int y)
+bool window_mode::get_hover(int x, int y)
 	{
-	for (auto n : g->get_nodes())
+	for (auto n : g->list_node)
 		{
 		float dist = sqrt(
 			pow(n->sprite.getPosition().x - x, 2)
@@ -70,12 +88,22 @@ graph::node* window_mode::get_hover(int x, int y)
 		if (dist < n->sprite.getRadius() + 4)
 			{//if a node is under the mouse
 			hover = n;
-			return(hover); // goto END;
+			return true;
+			}
+		}
+
+	for (auto a : g->list_arc)
+		{
+		sf::FloatRect bounds = a->sprite.getGlobalBounds();
+		if (x >= bounds.left && x <= bounds.left + bounds.width &&
+			y >= bounds.top && y <= bounds.top + bounds.height)
+			{
+			hover = a; 
+			return true;
 			}
 		}
 	hover = nullptr;
-	return(hover);
-	//END:;
+	return false;
 	}
 
 // =================================================== ======== ==================================
@@ -148,6 +176,47 @@ void window_mode::update_draw_grid()
 		}
 	}
 
+void window_mode::draw_node_details(graph::node * n)
+	{
+	std::stringstream ss;
+	ss << "N-" << n << "\n";
+	for (auto v : n->shared_vars) { ss << v.first << ": " << v.second << "\n"; }
+	for (auto v : n->vars) { ss << v.first << ": " << v.second << "\n"; }
+
+	sf::Text t(ss.str(), graphics_font_default); t.setFillColor(sf::Color::Cyan); t.setCharacterSize(12);
+	float width = t.getLocalBounds().width;
+	float height = t.getLocalBounds().height;
+	t.setOrigin(width / 2, height + 12);
+	t.setPosition(n->sprite.getPosition());
+	sf::RectangleShape box(sf::Vector2f(t.getLocalBounds().width + 8, t.getLocalBounds().height + 8));
+	box.setPosition(t.getGlobalBounds().left - 4, t.getGlobalBounds().top - 4);
+	box.setFillColor(sf::Color(0, 0, 20, 220));
+	box.setOutlineColor(sf::Color(0, 80, 255));
+	box.setOutlineThickness(1);
+	window.draw(box);
+	window.draw(t);
+	}
+void window_mode::draw_arc_details(graph::arc * a)
+	{
+	std::stringstream ss;
+	ss << "A-" << a << "\n";
+	for (auto v : a->shared_vars) { ss << v.first << ": " << v.second << "\n"; }
+	for (auto v : a->vars) { ss << v.first << ": " << v.second << "\n"; }
+
+	sf::Text t(ss.str(), graphics_font_default); t.setFillColor(sf::Color::Cyan); t.setCharacterSize(12);
+	float width = t.getLocalBounds().width;
+	float height = t.getLocalBounds().height;
+	t.setOrigin(width / 2, height + 12);
+	t.setPosition(a->sprite.getPosition());
+	sf::RectangleShape box(sf::Vector2f(t.getLocalBounds().width + 8, t.getLocalBounds().height + 8));
+	box.setPosition(t.getGlobalBounds().left - 4, t.getGlobalBounds().top - 4);
+	box.setFillColor(sf::Color(0, 0, 20, 220));
+	box.setOutlineColor(sf::Color(0, 80, 255));
+	box.setOutlineThickness(1);
+	window.draw(box);
+	window.draw(t);
+	}
+
 // =================================================== ================= ==================================
 // =================================================== ACTIONS AND MODES ==================================
 // =================================================== ================= ==================================
@@ -203,7 +272,6 @@ void window_mode::action_event_idle(sf::Event & event)
 				case sf::Keyboard::Delete:
 					for (auto n : selected_nodes)
 						{
-						std::cout << "Removing node: [" << n << "];" << std::endl;
 						g->remove_node(n);
 						}
 					selected_nodes.clear();
@@ -243,26 +311,48 @@ void window_mode::action_mouse_pressed_idle(sf::Event & event)
 		{
 		//if inside a node
 		sf::Vector2i m = mouse_on_world(event.mouseButton.x, event.mouseButton.y);
-		if (get_hover(m.x, m.y) != nullptr)
+		if (get_hover(m.x, m.y))
 			{
-			if (hover->selected)
+			if (hover.type == Hover::NODE)
 				{
-				if (ctrl)
-					{//deselect that node
-					deselect(hover);
+				if (hover.n->selected)
+					{
+					if (ctrl)
+						{//deselect that node
+						deselect(hover.n);
+						}
+					//enter move mode with all selected nodes
 					}
-				//enter move mode with all selected nodes
-				}
-			else
-				{//if it is not selected
-				if (!ctrl)
-					{//deselect all and select that
-					deselect_all();
+				else
+					{//if it is not selected
+					if (!ctrl)
+						{//deselect all and select that
+						deselect_all();
+						}
+					//in both cases select that node
+					select(hover.n);
 					}
-				//in both cases select that node
-				select(hover);
 				}
-
+			else if (hover.type == Hover::ARC)
+				{
+				if (hover.a->selected)
+					{
+					if (ctrl)
+						{//deselect that node
+						deselect(hover.a);
+						}
+					//enter move mode with all selected nodes
+					}
+				else
+					{//if it is not selected
+					if (!ctrl)
+						{//deselect all and select that
+						deselect_all();
+						}
+					//in both cases select that node
+					select(hover.a);
+					}
+				}
 			set_select_coords(m.x, m.y);
 			set_mode(dragging);
 			}
@@ -306,6 +396,16 @@ void window_mode::action_event_selecting(sf::Event &event)
 					if (x > x1 && x < x2 && y > y1 && y < y2)
 						{
 						select(n);
+						}
+					}
+				for (auto a : g->get_arcs())
+					{
+					float x = a->sprite.getPosition().x;
+					float y = a->sprite.getPosition().y;
+
+					if (x > x1 && x < x2 && y > y1 && y < y2)
+						{
+						select(a);
 						}
 					}
 
@@ -507,7 +607,7 @@ void window_mode::action_event_add_arc(sf::Event & event)
 			if (event.mouseButton.button == sf::Mouse::Left)
 				{
 				sf::Vector2i m = mouse_on_world(event.mouseButton.x, event.mouseButton.y);
-				if (get_hover(m.x, m.y) != nullptr)
+				if (get_hover(m.x, m.y) && hover.type == Hover::NODE)
 					{
 					set_select_coords(m.x, m.y);
 					clicking = true;
@@ -532,10 +632,10 @@ void window_mode::action_event_add_arc(sf::Event & event)
 			if (event.mouseButton.button == sf::Mouse::Left)
 				{
 				sf::Vector2i m = mouse_on_world(event.mouseButton.x, event.mouseButton.y);
-				graph::node * prev = hover;
-				if (get_hover(m.x, m.y) != nullptr && prev != nullptr)
+				graph::node * prev = hover.n;
+				if (get_hover(m.x, m.y) && hover.type == Hover::NODE && prev != nullptr)
 					{
-					g->add_arc(prev, hover);
+					g->add_arc(prev, hover.n);
 					}
 
 				if (!ctrl)
@@ -577,6 +677,7 @@ window_mode::window_mode(graph* g) : g(g)
 		}
 
 	set_mode(idle);
+	hover.n = nullptr;
 
 	graphics_gui_text_offset = sf::Text();
 	graphics_gui_text_zoom = sf::Text();
@@ -602,13 +703,12 @@ window_mode::~window_mode()
 
 int window_mode::run()
 	{
-
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
 	settings.sRgbCapable = false;
 	window.create(sf::VideoMode(800, 600), "Graph Maker", sf::Style::Default, settings);
 	//window.setKeyRepeatEnabled(false);
-
+	window.setFramerateLimit(60);
 	update_draw_grid();
 	view_work_area = window.getDefaultView();
 	view_gui = window.getDefaultView();
@@ -768,6 +868,18 @@ void window_mode::draw()
 
 	(this->*action_draw)();
 
+	if (alt) 
+		{
+		for (auto n : g->get_nodes()) { draw_node_details(n); }
+		for (auto a : g->get_arcs()) { draw_arc_details(a); }
+		}
+	else if (hover.n != nullptr)
+		{
+		if (hover.type == Hover::NODE) { draw_node_details(hover.n); }
+		else /*if (hover.type == Hover::ARC)*/ { draw_arc_details(hover.a); }
+		}
+
+
 	sf::CircleShape c(20, 30);
 	c.setPosition(30, 30);
 	c.setFillColor(sf::Color::Green);
@@ -783,4 +895,22 @@ void window_mode::draw()
 	window.draw(graphics_gui_text_offset);
 
 	window.display();
+	}
+
+void window_mode::Hover::operator=(graph::node * n)
+	{
+	type = NODE;
+	this->n = n;
+	}
+
+void window_mode::Hover::operator=(graph::arc * a)
+	{
+	type = ARC;
+	this->a = a;
+	}
+
+void window_mode::Hover::operator=(nullptr_t null)
+	{
+	type = NODE;
+	this->n = nullptr;
 	}

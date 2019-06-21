@@ -1,0 +1,181 @@
+void dfa(node@)
+
+Temps: 7, 14, 21, 22, 24, 25, 27, 29
+
+Variables: 
+ 000: node@ n
+ 026: (heap) node@ next
+ 025: (heap) string {noname}
+ 027: (heap) node {noname}
+ 007: string {noname}
+ 014: string {noname}
+ 021: string {noname}
+
+
+- 1,40 -
+               VarDecl  0
+    0  29 *    SUSPEND
+    1  29 *    PGA      136761184
+    3  30 *    PSF      v14
+    4  31 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v14, 1
+    6  29 *    PSF      v7
+    7  30 *    PshVPtr  v0
+    8  31 *    CALLSYS  213           (string node::id())
+               ObjInfo  v7, 1
+   10  29 *    VAR      v7
+   11  30 *    PSF      v21
+   12  31 *    PSF      v14
+   13  32 *    GETREF   2
+   14  32 *    CALLSYS  26           (string string::opAdd(const string&in) const)
+               ObjInfo  v21, 1
+   16  29 *    PSF      v14
+   17  30 *    CALLSYS  21           (string::~string())
+               ObjInfo  v14, 0
+   19  29 *    PSF      v7
+   20  30 *    CALLSYS  21           (string::~string())
+               ObjInfo  v7, 0
+   22  29 *    PSF      v21
+   23  30 *    CALLSYS  196           (void print(const string&in))
+   25  29 *    PSF      v21
+   26  30 *    CALLSYS  21           (string::~string())
+- 1,72 -
+               ObjInfo  v21, 0
+   28  29 *    SUSPEND
+   29  29 *    CpyGtoV4 v22, 15703520
+   31  29 *    iTOd     v24, v22
+   33  29 *    PshV8    v24
+   34  31 *    PSF      v25
+   35  32 *    PGA      136760128
+   37  33 *    PSF      v14
+   38  34 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v14, 1
+   40  32 *    PSF      v14
+   41  33 *    ALLOC    0xe869f8, 20             (type:string, {no func})
+   44  31 *    PSF      v14
+   45  32 *    CALLSYS  21           (string::~string())
+               ObjInfo  v14, 0
+   47  31 *    VAR      v25
+   48  32 *    PshVPtr  v0
+   49  33 *    GETOBJ   1
+   50  33 *    CALLSYS  219           (void node::shr_set(string, double = 0))
+- 1,106 -
+   52  29 *    SUSPEND
+   53  29 *    LDG      15703520
+   55  29 *    INCi
+- 1,117 -
+   56  29 *    SUSPEND
+   57  29 *    PshC8    0x3ff0000000000000          (i:4607182418800017408, f:1)
+   60  31 *    PSF      v25
+   61  32 *    PGA      136762416
+   63  33 *    PSF      v7
+   64  34 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v7, 1
+   66  32 *    PSF      v7
+   67  33 *    ALLOC    0xe869f8, 20             (type:string, {no func})
+   70  31 *    PSF      v7
+   71  32 *    CALLSYS  21           (string::~string())
+               ObjInfo  v7, 0
+   73  31 *    VAR      v25
+   74  32 *    PshVPtr  v0
+   75  33 *    GETOBJ   1
+   76  33 *    CALLSYS  219           (void node::shr_set(string, double = 0))
+- 1,149 -
+   78  29 *    SUSPEND
+   79  29 *    PshVPtr  v0
+   80  30 *    CALLSYS  211           (void node::adj_reset())
+- 1,167 -
+   82  29 *    SUSPEND
+               VarDecl  1
+   83  29 *    PshVPtr  v0
+   84  30 *    CALLSYS  212           (node@ node::adj())
+   86  29 *    FREE     v26, 15413192
+   88  29 *    STOREOBJ v26
+- 1,192 -
+   89  29 *    SUSPEND
+            1:
+   90  29 *    ClrVPtr  v27
+   91  29 *    CmpPtr   v26, v27
+   93  29 *    TNZ
+   94  29 *    CpyRtoV4 v22
+   95  29 *    FREE     v27, 15413192
+   97  29 *    CpyVtoR4 v22
+   98  29 *    JLowZ    +50              (d:150)
+  100  29 *    SUSPEND
+- 1,229 -
+            {
+  101  29 *    SUSPEND
+  102  29 *    PSF      v25
+  103  30 *    PGA      136762416
+  105  31 *    PSF      v14
+  106  32 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v14, 1
+  108  30 *    PSF      v14
+  109  31 *    ALLOC    0xe869f8, 20             (type:string, {no func})
+  112  29 *    PSF      v14
+  113  30 *    CALLSYS  21           (string::~string())
+               ObjInfo  v14, 0
+  115  29 *    VAR      v25
+  116  30 *    PshVPtr  v26
+  117  31 *    GETOBJ   1
+  118  31 *    CALLSYS  220           (double node::shr_get(string))
+  120  29 *    CpyRtoV8 v24
+  121  29 *    SetV8    v29, 0x0          (i:0, f:0)
+  124  29 *    CMPd     v24, v29
+  126  29 *    JNZ      +9              (d:137)
+- 1,289 -
+            {
+  128  29 *    SUSPEND
+  129  29 *    PshVPtr  v26
+  130  30 *    RefCpyV  v27, 15413192
+  132  30 *    PopPtr
+  133  29 *    VAR      v27
+  134  30 *    GETOBJ   0
+  135  30 *    CALL     221           (void dfa(node@))
+- 1,320 -
+            }
+            3:
+  137  29 *    SUSPEND
+  138  29 *    PshVPtr  v0
+  139  30 *    CALLSYS  212           (node@ node::adj())
+  141  29 *    STOREOBJ v27
+  142  29 *    PshVPtr  v27
+  143  30 *    RefCpyV  v26, 15413192
+  145  30 *    FREE     v27, 15413192
+  147  30 *    PopPtr
+            }
+  148  29 *    JMP      -60              (d:90)
+- 1,349 -
+            2:
+  150  29 *    SUSPEND
+  151  29 *    PGA      136760832
+  153  30 *    PSF      v7
+  154  31 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v7, 1
+  156  29 *    PSF      v21
+  157  30 *    PshVPtr  v0
+  158  31 *    CALLSYS  213           (string node::id())
+               ObjInfo  v21, 1
+  160  29 *    VAR      v21
+  161  30 *    PSF      v14
+  162  31 *    PSF      v7
+  163  32 *    GETREF   2
+  164  32 *    CALLSYS  26           (string string::opAdd(const string&in) const)
+               ObjInfo  v14, 1
+  166  29 *    PSF      v7
+  167  30 *    CALLSYS  21           (string::~string())
+               ObjInfo  v7, 0
+  169  29 *    PSF      v21
+  170  30 *    CALLSYS  21           (string::~string())
+               ObjInfo  v21, 0
+  172  29 *    PSF      v14
+  173  30 *    CALLSYS  196           (void print(const string&in))
+  175  29 *    PSF      v14
+  176  30 *    CALLSYS  21           (string::~string())
+- 1,381 -
+               ObjInfo  v14, 0
+  178  29 *    SUSPEND
+  179  29 *    FREE     v26, 15413192
+            0:
+  181  29 *    FREE     v0, 15413192
+  183  29 *    RET      1

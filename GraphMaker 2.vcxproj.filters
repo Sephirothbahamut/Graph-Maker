@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\angelscript">
+      <UniqueIdentifier>{a09a571c-c547-461b-af1f-e1cbb9e859fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\angelscript">
+      <UniqueIdentifier>{b8b95c1b-942e-427a-ba37-87bd3d05ad97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -36,6 +42,99 @@
     <ClInclude Include="variable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="script_console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptarray\scriptarray.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptfile\scriptfile.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptfile\scriptfilesystem.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptmath\scriptmath.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptmath\scriptmathcomplex.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\scriptstdstring\scriptstdstring.h">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="graph_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_common.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_config.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_deque.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_list.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_listing.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_listing_heavy.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_map.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_mapped_templated_shared.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_mapped_templated_shared_method.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_set.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_shared.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_templated_shared.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_templated_shared_method.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_tempspec_shared.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_tempspec_shared_method.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_unordered_map.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_unordered_set.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_container_vector.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_enginestorage.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_hash.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_serializer.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
+    <ClInclude Include="angelscript\stl_containers\aatc_templatemagic.hpp">
+      <Filter>Header Files\angelscript</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -58,6 +157,75 @@
     </ClCompile>
     <ClCompile Include="variable.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="script_console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptarray\scriptarray.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptfile\scriptfilesystem.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptfile\scriptfile.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptmath\scriptmathcomplex.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptmath\scriptmath.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptstdstring\scriptstdstring_utils.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\scriptstdstring\scriptstdstring.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_common.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_deque.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_list.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_map.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_set.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_shared.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_unordered_map.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_unordered_set.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_container_vector.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_enginestorage.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_hash.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_registration.cpp">
+      <Filter>Source Files\angelscript</Filter>
+    </ClCompile>
+    <ClCompile Include="angelscript\stl_containers\aatc_serializer.cpp">
+      <Filter>Source Files\angelscript</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

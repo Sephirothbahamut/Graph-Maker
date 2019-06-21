@@ -3,7 +3,8 @@
 
 class graph::arc : public sf::Drawable
 	{
-	friend graph;
+	friend class graph;
+	friend class window_mode;
 
 	private:
 		graph * owner;
@@ -25,8 +26,10 @@ class graph::arc : public sf::Drawable
 
 
 	public:
-		sf::VertexArray sprite;
-		sf::RectangleShape selectable_sprite;
+		void AddRef(); void ReleaseRef(); //required by angelscript
+
+		sf::VertexArray connection;
+		sf::RectangleShape sprite;
 		bool selected = false;
 
 		void set_directed(bool directed);
@@ -37,9 +40,11 @@ class graph::arc : public sf::Drawable
 		bool get_directed();
 
 		void set_style(graph::arc_style_type style);
+		void set_color(sf::Color fill, sf::Color outline);
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		// User variables
+		std::string id();
 		//personal
 		bool chk(std::string name);
 		void set(std::string name, double value = 0);

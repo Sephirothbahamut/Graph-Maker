@@ -1,0 +1,56 @@
+void script()
+
+Temps: 2, 9, 10, 11
+
+Variables: 
+ 010: (heap) string {noname}
+ 011: (heap) node {noname}
+ 009: string {noname}
+
+
+- 1,403 -
+    0  11 *    SUSPEND
+    1  11 *    PshC8    0x0          (i:0, f:0)
+    4  13 *    PSF      v10
+    5  14 *    PGA      136762416
+    7  15 *    PSF      v9
+    8  16 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v9, 1
+   10  14 *    PSF      v9
+   11  15 *    ALLOC    0xe869f8, 20             (type:string, {no func})
+   14  13 *    PSF      v9
+   15  14 *    CALLSYS  21           (string::~string())
+               ObjInfo  v9, 0
+   17  13 *    VAR      v10
+   18  14 *    PshGPtr  15701228
+   20  15 *    GETOBJ   1
+   21  15 *    CALLSYS  205           (void graph::shr_set(string, double = 0))
+- 1,431 -
+   23  11 *    SUSPEND
+   24  11 *    PshC8    0x0          (i:0, f:0)
+   27  13 *    PSF      v10
+   28  14 *    PGA      136760128
+   30  15 *    PSF      v9
+   31  16 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v9, 1
+   33  14 *    PSF      v9
+   34  15 *    ALLOC    0xe869f8, 20             (type:string, {no func})
+   37  13 *    PSF      v9
+   38  14 *    CALLSYS  21           (string::~string())
+               ObjInfo  v9, 0
+   40  13 *    VAR      v10
+   41  14 *    PshGPtr  15701228
+   43  15 *    GETOBJ   1
+   44  15 *    CALLSYS  205           (void graph::shr_set(string, double = 0))
+- 1,462 -
+   46  11 *    SUSPEND
+   47  11 *    PshGPtr  15701228
+   49  12 *    CALLSYS  201           (node@ graph::get_first_node())
+   51  11 *    STOREOBJ v11
+   52  11 *    VAR      v11
+   53  12 *    GETOBJ   0
+   54  12 *    CALL     221           (void dfa(node@))
+- 1,491 -
+   56  11 *    SUSPEND
+            0:
+   57  11 *    RET      0

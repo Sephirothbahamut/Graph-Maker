@@ -92,13 +92,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\include;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>angelscriptd.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\lib;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -109,10 +109,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\include;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\lib;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2x64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>angelscript64d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,15 +128,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\include;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>angelscript.lib;sfml-graphics.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\lib;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,28 +149,85 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\include;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2x64\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\angelscript\lib;C:\Users\Sephirothbahamut\Documents\Programming\VS\Libraries\SFML-2.4.2x64\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>angelscript64.lib;sfml-graphics.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="angelscript\scriptarray\scriptarray.h" />
+    <ClInclude Include="angelscript\scriptfile\scriptfile.h" />
+    <ClInclude Include="angelscript\scriptfile\scriptfilesystem.h" />
+    <ClInclude Include="angelscript\scriptmath\scriptmath.h" />
+    <ClInclude Include="angelscript\scriptmath\scriptmathcomplex.h" />
+    <ClInclude Include="angelscript\scriptstdstring\scriptstdstring.h" />
+    <ClInclude Include="angelscript\stl_containers\aatc.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_common.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_config.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_deque.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_list.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_listing.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_listing_heavy.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_map.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_mapped_templated_shared.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_mapped_templated_shared_method.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_set.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_shared.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_templated_shared.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_templated_shared_method.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_tempspec_shared.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_tempspec_shared_method.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_unordered_map.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_unordered_set.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_container_vector.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_enginestorage.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_hash.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_serializer.hpp" />
+    <ClInclude Include="angelscript\stl_containers\aatc_templatemagic.hpp" />
     <ClInclude Include="arc.h" />
     <ClInclude Include="graph.h" />
+    <ClInclude Include="graph_component.h" />
     <ClInclude Include="node.h" />
+    <ClInclude Include="script_console.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="variable.h" />
     <ClInclude Include="window_mode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="angelscript\scriptarray\scriptarray.cpp" />
+    <ClCompile Include="angelscript\scriptfile\scriptfile.cpp" />
+    <ClCompile Include="angelscript\scriptfile\scriptfilesystem.cpp" />
+    <ClCompile Include="angelscript\scriptmath\scriptmath.cpp" />
+    <ClCompile Include="angelscript\scriptmath\scriptmathcomplex.cpp" />
+    <ClCompile Include="angelscript\scriptstdstring\scriptstdstring.cpp" />
+    <ClCompile Include="angelscript\scriptstdstring\scriptstdstring_utils.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_common.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_deque.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_list.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_map.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_set.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_shared.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_unordered_map.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_unordered_set.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_container_vector.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_enginestorage.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_hash.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_registration.cpp" />
+    <ClCompile Include="angelscript\stl_containers\aatc_serializer.cpp" />
     <ClCompile Include="arc.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="GraphMaker 2.cpp" />
+    <ClCompile Include="graph_component.cpp" />
     <ClCompile Include="node.cpp" />
+    <ClCompile Include="script_console.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

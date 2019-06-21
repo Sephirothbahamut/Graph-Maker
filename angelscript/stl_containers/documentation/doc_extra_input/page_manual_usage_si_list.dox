@@ -1,0 +1,53 @@
+/*! \page page_manual_usage_si_list list
+\code{.cpp}
+template<typename T> class list{
+	list();
+	list(const list@ other);
+	list& opAssign(const list@ other);
+	list& swap(list &inout other);
+	void SetDirectcomp(bool yesno);
+	
+	
+	
+	int size();
+	void clear();
+	bool empty();
+	
+	void push_back(T &in value);
+	void push_front(T &in value);
+	void pop_back();
+	void pop_front();
+	T& back();
+	T& front();
+	
+	void insert(int index,const T &in value);
+	void insert(const list_iterator<T> &in iterator, const T &in value);
+	
+	void erase(int index);
+	void erase(int index_range_begin,int index_range_end);
+	void erase_value(T &in value,bool all = false);
+	bool erase(const list_iterator<T> &in iterator);
+	int erase(const list_iterator<T> &in iterator_range_begin, const list_iterator<T> &in iterator_range_end);
+	
+	//sort with opCmp
+	void sort(bool ascending);
+	//sort with aatc_funcpointer
+	void sort(aatc_funcpointer@ func,bool ascending)
+	//sort with any angelscript function, even anonymous functions or delegates. Only works with tempspec'd containers for now.
+	void sort(aatc_funcdef_cmp_T@ func,bool ascending)
+	
+	list_iterator<T> begin();
+	list_iterator<T> end();
+	
+	
+	
+	//Nonstandard convenience functions
+	
+	bool contains(T &in value);
+	int count(T &in value);
+	
+	//find that returns an iterator, returns end if not found
+	list_iterator<T> find_iterator(const T &in value);
+};
+\endcode
+*/

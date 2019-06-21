@@ -94,39 +94,46 @@ graph::node::~node()
 #endif
 		owner->remove_arc(*list_arc_to.begin());
 		}
-	owner->list_node.remove(this);
 
 #ifdef DEBUG_GRAPH_BUILDING
-	debug_msg << ME << "Died " << this << endl;
+	debug_msg << ME << "Dead " << endl;
 	debug_depth--;
 #endif
 	}
 
 
-std::vector<graph::node*> graph::node::get_adj_node()
+void graph::node::AddRef(){} void graph::node::ReleaseRef(){}
+
+std::vector<graph::node*> graph::node::adj_vector()
 	{
-	if (iteration_invalidated)
-		{
-		iteration_vector_node.clear();
-		for (arc* a : list_arc_from)
-			{
-			iteration_vector_node.push_back(a->to);
-			}
-		}
-	return(iteration_vector_node);
+	std::vector<graph::node*> v; v.reserve(list_arc_from.size());
+	for (auto a : list_arc_from) { v.push_back(a->get_to()); }
+	return v;
 	}
 
-std::vector<graph::arc*> graph::node::get_adj_arc()
+std::vector<graph::arc*> graph::node::adj_arc_vector()
 	{
-	if (iteration_invalidated)
+	return std::vector<graph::arc*>(list_arc_from.begin(), list_arc_from.end());
+	}
+
+void graph::node::adj_reset() { adj_it = list_arc_from.begin(); iteration_invalidated = false; }
+graph::node * graph::node::adj_next()
+	{
+	if (iteration_invalidated) { return nullptr; }
+	else if (adj_it == list_arc_from.end()) { return nullptr; }
+	else
 		{
-		iteration_vector_arc.clear();
-		for (arc* a : list_arc_from)
-			{
-			iteration_vector_arc.push_back(a);
-			}
+		graph::arc* a = *adj_it;
+		adj_it++;
+		if (a->get_to() != this) { return a->get_to(); }
+		else { return a->get_from(); }
 		}
-	return(iteration_vector_arc);
+	}
+graph::arc * graph::node::adj_arc()
+	{
+	if (iteration_invalidated) { return nullptr; }
+	else if (adj_it == list_arc_from.end()) { return nullptr; }
+	else { return *(adj_it++); }
 	}
 
 void graph::node::set_color(sf::Color fill, sf::Color outline)
@@ -181,20 +188,17 @@ void graph::node::change_size(float change)
 	set_size(sprite.getRadius() + change);
 	}
 
+#include <sstream>
 void graph::node::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 	target.draw(sprite);
-	float width = 0;
-	sf::Text(std::to_string(unsigned int(this)), sf::Font);
-	for (auto v : shared_vars)
-		{
+	}
 
-		}
-	for (auto v : vars)
-		{
-
-		}
-	sf::RectangleShape box();
+#include <sstream>
+std::string graph::node::id()
+	{
+	std::stringstream ss; ss << "N-" << this;
+	return std::string(ss.str());
 	}
 
 //personal

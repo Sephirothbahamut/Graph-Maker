@@ -5,6 +5,16 @@
 
 class window_mode
 	{
+	struct Hover
+		{
+		union { graph::node* n; graph::arc* a; };
+		enum TYPE {NODE, ARC};
+		TYPE type;
+		void operator=(graph::node* n);
+		void operator=(graph::arc* a);
+		void operator=(nullptr_t null);
+		};
+
 	graph* g;
 	sf::RenderWindow window;
 
@@ -22,7 +32,7 @@ class window_mode
 	float drag_offset_x;
 	float drag_offset_y;
 
-	graph::node* hover = nullptr;
+	Hover hover;
 	bool ctrl = false;
 	bool alt = false;
 	bool clicking = false;
@@ -33,9 +43,12 @@ class window_mode
 	std::set<graph::node*> selected_nodes;
 	void select(graph::node* n);
 	void deselect(graph::node* n);
+	std::set<graph::arc*> selected_arcs;
+	void select(graph::arc* a);
+	void deselect(graph::arc* a);
 	void deselect_all();
 	void set_select_coords(int x, int y);
-	graph::node* get_hover(int x, int y);
+	bool get_hover(int x, int y);
 
 	// =================================================== ======== ==================================
 	// =================================================== Graphics ==================================
@@ -56,6 +69,9 @@ class window_mode
 
 	sf::VertexArray draw_grid = sf::VertexArray(sf::Lines, 0);
 	void update_draw_grid();
+
+	void draw_node_details(graph::node* n);
+	void draw_arc_details(graph::arc* a);
 
 	sf::Color color_node_idle;
 	sf::Color color_node_idle_outline;

@@ -28,10 +28,10 @@ using std::endl;
 
 class graph : public sf::Drawable
 	{
+	friend class window_mode;
 	public:
-
 		enum arc_style_type { triangular, linear };
-		arc_style_type arc_style = linear;
+		arc_style_type arc_style = triangular;
 
 		typedef unsigned short int node_id;
 		typedef unsigned short int arc_id;
@@ -45,6 +45,7 @@ class graph : public sf::Drawable
 		friend arc;
 
 	private:
+
 		std::list<node*> list_node;
 		std::list<arc*> list_arc;
 
@@ -55,16 +56,22 @@ class graph : public sf::Drawable
 
 
 	public:
+		void AddRef(); void ReleaseRef(); //required by angelscript
+
+		std::list<node*>::iterator node_it;
+		node* node_next();
+		void node_reset();
+
 		graph();
 		~graph();
 
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		node* add_node();
-		void remove_node(node* n);
+		bool remove_node(node* n);
 
 		arc* add_arc(node* from, node* to, bool directed = false, bool merge = true);
-		void remove_arc(arc* a);
+		bool remove_arc(arc* a);
 
 
 		//iterate

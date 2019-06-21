@@ -4,7 +4,8 @@
 
 class graph::node : public sf::Drawable
 	{
-	friend graph;
+	friend class graph;
+	friend class window_mode;
 
 	private:
 		graph * owner;
@@ -25,18 +26,20 @@ class graph::node : public sf::Drawable
 		node(graph * owner);
 		~node();
 
-		std::vector<arc*> iteration_vector_arc;
-		std::vector<node*> iteration_vector_node;
-		bool iteration_invalidated = true;
-
-
 	public:
+		void AddRef(); void ReleaseRef(); //required by angelscript
 		sf::CircleShape sprite;
 		bool selected = false;
 
 
-		std::vector<node*> get_adj_node();
-		std::vector<arc*> get_adj_arc();
+		std::vector<node*> adj_vector();
+		std::vector<arc*> adj_arc_vector();
+		std::set<arc*>::iterator adj_it;
+		bool iteration_invalidated = true;
+
+		void adj_reset();
+		node* adj_next();
+		arc* adj_arc();
 
 		void set_color(sf::Color fill, sf::Color outline);
 		void set_position(float x, float y);
@@ -46,6 +49,7 @@ class graph::node : public sf::Drawable
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		// User variables
+		std::string id();
 		//personal
 		bool chk(std::string name);
 		void set(std::string name, double value = 0);

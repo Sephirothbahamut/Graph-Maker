@@ -7,6 +7,17 @@ unsigned int debug_depth = 0;
 #define ME "[GRAPH]: "
 #endif
 
+void graph::AddRef() {} void graph::ReleaseRef() {}
+
+graph::node * graph::node_next()
+	{
+	if (node_it == list_node.end()) { return nullptr; }
+	else { return *node_it++; }
+	}
+
+void graph::node_reset() { node_it = list_node.begin(); }
+
+
 graph::graph()
 	{}
 
@@ -43,17 +54,28 @@ graph::node* graph::add_node()
 	return node;
 	}
 
-void graph::remove_node(node* n)
+bool graph::remove_node(node* n)
 	{
 #ifdef DEBUG_GRAPH_BUILDING
 	debug_depth++;
-	debug_msg << ME << "Removing node " << this << endl;
+	debug_msg << ME << "Removing node " << n << endl;
 #endif
-	delete n;
+	auto found = std::find(list_node.begin(), list_node.end(), n);
+	if (found != list_node.end())
+		{
+		list_node.erase(found);
+		delete n;
 #ifdef DEBUG_GRAPH_BUILDING
-	debug_msg << ME << "Node removed" << endl;
+		debug_msg << ME << "Node removed" << endl;
+		debug_depth--;
+#endif
+		return true;
+		}
+#ifdef DEBUG_GRAPH_BUILDING
+	debug_msg << ME << "Node not found" << endl;
 	debug_depth--;
 #endif
+	return false;
 	}
 
 graph::arc* graph::add_arc(node* from, node* to, bool directed, bool merge)
@@ -100,17 +122,28 @@ graph::arc* graph::add_arc(node* from, node* to, bool directed, bool merge)
 	return(new graph::arc(this, from, to, directed));
 	}
 
-void graph::remove_arc(arc* a)
+bool graph::remove_arc(arc* a)
 	{
 #ifdef DEBUG_GRAPH_BUILDING
 	debug_depth++;
-	debug_msg << ME << "Removing arc " << this << endl;
+	debug_msg << ME << "Removing arc " << a << endl;
 #endif
-	delete a;
+	auto found = std::find(list_arc.begin(), list_arc.end(), a);
+	if (found != list_arc.end())
+		{
+		list_arc.erase(found);
+		delete a;
 #ifdef DEBUG_GRAPH_BUILDING
-	debug_msg << ME << "Arc removed" << endl;
+		debug_msg << ME << "Arc removed" << endl;
+		debug_depth--;
+#endif
+		return true;
+		}
+#ifdef DEBUG_GRAPH_BUILDING
+	debug_msg << ME << "Arc not found" << endl;
 	debug_depth--;
 #endif
+	return false;
 	}
 
 const std::list<graph::node*>& graph::get_nodes()
@@ -151,25 +184,25 @@ void graph::shared_nodes_variable_del(std::string var_name)
 //arc
 bool graph::shared_arcs_variable_chk(std::string var_name)
 	{
-	return(shared_vars_node.find(var_name) != shared_vars_node.end());
+	return(shared_vars_arc.find(var_name) != shared_vars_arc.end());
 	}
 
 void graph::shared_arcs_variable_set(std::string var_name, double default_value)
 	{
-	for (node* n : list_node)
+	for (arc* a : list_arc)
 		{
-		n->shr_set(var_name, default_value);
+		a->shr_set(var_name, default_value);
 		}
-	shared_vars_node[var_name] = default_value;
+	shared_vars_arc[var_name] = default_value;
 	}
 
 void graph::shared_arcs_variable_del(std::string var_name)
 	{
-	for (node* n : list_node)
+	for (arc* a : list_arc)
 		{
-		n->shr_del(var_name);
+		a->shr_del(var_name);
 		}
-	shared_vars_node.erase(var_name);
+	shared_vars_arc.erase(var_name);
 	}
 
 bool graph::read_file(std::string fname, filetype ftype)
