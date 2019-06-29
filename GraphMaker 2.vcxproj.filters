@@ -135,6 +135,9 @@
     <ClInclude Include="angelscript\stl_containers\aatc_templatemagic.hpp">
       <Filter>Header Files\angelscript</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -227,5 +230,15 @@
     <ClCompile Include="angelscript\stl_containers\aatc_serializer.cpp">
       <Filter>Source Files\angelscript</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GraphMaker 2.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Installer\GraphMaker 2 icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
