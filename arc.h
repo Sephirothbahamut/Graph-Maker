@@ -7,14 +7,14 @@ class graph::arc : public sf::Drawable
 	friend class window_mode;
 
 	private:
-		graph * owner;
+		graph* owner;
 
 		node* from;
 		node* to;
 		bool directed;
 
 		// User variables
-		std::unordered_map<std::string, double> shared_vars;
+		std::unordered_map<const std::string*, double> shared_vars;
 		std::unordered_map<std::string, double> vars;
 		// //// //
 
@@ -55,7 +55,10 @@ class graph::arc : public sf::Drawable
 		bool shr_chk(std::string name);
 		void shr_set(std::string name, double value);
 		double shr_get(std::string name);
-	private: void shr_del(std::string name);
+
+	private:
+		void graph_shr_set(const std::string* s, double value);
+		void graph_shr_del(const std::string* s);
 			 // //// //
 	public:
 

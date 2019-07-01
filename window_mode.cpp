@@ -136,6 +136,47 @@ void window_mode::view_zoom(float zoom_offset)
 
 void window_mode::update_draw_grid()
 	{
+	/*float min_x = view_work_area.getCenter().x - ((window.getSize().x / 2) + grid_x);
+	float min_y = view_work_area.getCenter().y - ((window.getSize().y / 2) + grid_y);
+	float max_x = view_work_area.getCenter().x + ((window.getSize().x / 2) + grid_x);
+	float max_y = view_work_area.getCenter().y + ((window.getSize().y / 2) + grid_y);
+
+	unsigned int index = 0;
+	unsigned int size = (((max_x - min_x) / grid_x) + ((max_y - min_y) / grid_y) + 2) * 2;
+	if (size != draw_grid.getVertexCount())
+		{
+		draw_grid.resize(size);
+		}
+
+	//hor lines
+	for (float y = min_y; y < max_y; y += grid_y)
+		{
+		draw_grid[index] = sf::Vector2f(min_x - grid_x, y - grid_y);
+		draw_grid[index].color = sf::Color(100, 100, 100, 255);
+		index++;
+		draw_grid[index] = sf::Vector2f(max_x + grid_x, y - grid_y);
+		draw_grid[index].color = sf::Color(100, 100, 100, 255);
+		index++;
+		}
+
+	//vert lines
+	for (unsigned int x = 0; x < max_x; x += grid_x)
+		{
+		draw_grid[index] = sf::Vector2f(x - grid_x, min_y - grid_y);
+		draw_grid[index].color = sf::Color(100, 100, 100, 255);
+		index++;
+		draw_grid[index] = sf::Vector2f(x - grid_x, max_y + grid_y);
+		draw_grid[index].color = sf::Color(100, 100, 100, 255);
+		index++;
+		}
+
+	//snap
+	for (index = 0; index < size; index++)
+		{
+		draw_grid[index].position.x += view_offset_x - (view_offset_x % grid_x);
+		draw_grid[index].position.y += view_offset_y - (view_offset_y % grid_y);
+		}*/
+
 	unsigned int max_x = window.getSize().x + (2 * grid_x); // +2 to ad a square outside on both sides to see it partially when view is not snapping to the grid
 	unsigned int max_y = window.getSize().y + (2 * grid_y); // +2 to ad a square outside on both sides to see it partially when view is not snapping to the grid
 
@@ -180,7 +221,7 @@ void window_mode::draw_node_details(graph::node * n)
 	{
 	std::stringstream ss;
 	ss << "N-" << n << "\n";
-	for (auto v : n->shared_vars) { ss << v.first << ": " << v.second << "\n"; }
+	for (auto v : n->shared_vars) { ss << *(v.first) << ": " << v.second << "\n"; }
 	for (auto v : n->vars) { ss << v.first << ": " << v.second << "\n"; }
 
 	sf::Text t(ss.str(), graphics_font_default); t.setFillColor(sf::Color::Cyan); t.setCharacterSize(12);
@@ -200,7 +241,7 @@ void window_mode::draw_arc_details(graph::arc * a)
 	{
 	std::stringstream ss;
 	ss << "A-" << a << "\n";
-	for (auto v : a->shared_vars) { ss << v.first << ": " << v.second << "\n"; }
+	for (auto v : a->shared_vars) { ss << *(v.first) << ": " << v.second << "\n"; }
 	for (auto v : a->vars) { ss << v.first << ": " << v.second << "\n"; }
 
 	sf::Text t(ss.str(), graphics_font_default); t.setFillColor(sf::Color::Cyan); t.setCharacterSize(12);
@@ -734,7 +775,8 @@ int window_mode::run()
 				case sf::Event::Resized:
 					if (true)
 						{
-						view_work_area.setSize(event.size.width, event.size.height);
+						view_work_area = sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height));
+						//view_work_area.setSize(event.size.width, event.size.height);
 						view_gui.setSize(event.size.width, event.size.height);
 						update_draw_grid();
 						}
@@ -881,14 +923,14 @@ void window_mode::draw()
 
 
 	sf::CircleShape c(20, 30);
-	c.setPosition(30, 30);
+	c.setPosition(0, 0);
 	c.setFillColor(sf::Color::Green);
 	window.draw(c);
 
 	window.setView(view_gui);
 
 	sf::CircleShape d(20, 30);
-	d.setPosition(50, 30);
+	d.setPosition(0, 0);
 	d.setFillColor(sf::Color::Red);
 	window.draw(d);
 	window.draw(graphics_gui_text_zoom);

@@ -24,11 +24,11 @@
   arc.cpp
   graph.cpp
 graph.cpp(87): warning C4101: 'arc': unreferenced local variable
-graph.cpp(212): warning C4101: 'c': unreferenced local variable
+graph.cpp(202): warning C4101: 'c': unreferenced local variable
   GraphMaker 2.cpp
   graph_component.cpp
   node.cpp
-node.cpp(175): warning C4244: 'argument': conversion from 'float' to '::size_t', possible loss of data
+node.cpp(176): warning C4244: 'argument': conversion from 'float' to '::size_t', possible loss of data
   script_console.cpp
   variable.cpp
   window_mode.cpp
@@ -39,43 +39,43 @@ window_mode.cpp(75): warning C4244: '=': conversion from 'int' to 'float', possi
 window_mode.cpp(115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 window_mode.cpp(127): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 window_mode.cpp(131): warning C4305: '=': truncation from 'double' to 'float'
-window_mode.cpp(152): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(152): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(155): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(163): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(166): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(299): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(300): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(383): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(384): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(419): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(420): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(448): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(449): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(469): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(470): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(513): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(514): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(516): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-window_mode.cpp(517): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-window_mode.cpp(550): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(551): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(571): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(572): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(626): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(627): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(737): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(738): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-window_mode.cpp(781): warning C4305: 'argument': truncation from 'double' to 'float'
-window_mode.cpp(787): warning C4305: 'argument': truncation from 'double' to 'float'
-window_mode.cpp(817): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-window_mode.cpp(823): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(827): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(834): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-window_mode.cpp(838): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+window_mode.cpp(193): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(193): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(196): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(204): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(204): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(207): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(340): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(341): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(424): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(425): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(460): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(461): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(489): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(490): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(510): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(511): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(554): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(555): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(557): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+window_mode.cpp(558): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+window_mode.cpp(591): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(592): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(612): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(613): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(667): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(668): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(778): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(780): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+window_mode.cpp(823): warning C4305: 'argument': truncation from 'double' to 'float'
+window_mode.cpp(829): warning C4305: 'argument': truncation from 'double' to 'float'
+window_mode.cpp(859): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+window_mode.cpp(865): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(869): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(876): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+window_mode.cpp(880): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
      Creating library C:\Users\Sephirothbahamut\Documents\Programming\VS\Projects\SFML\GraphMaker 2\x64\Release\GraphMaker 2.lib and object C:\Users\Sephirothbahamut\Documents\Programming\VS\Projects\SFML\GraphMaker 2\x64\Release\GraphMaker 2.exp
   Generating code
-c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\script_console.cpp(204): warning C4715: 'script_console::run': not all control paths return a value
+c:\users\sephirothbahamut\documents\programming\vs\projects\sfml\graphmaker 2\graphmaker 2\script_console.cpp(206): warning C4715: 'script_console::run': not all control paths return a value
   Finished generating code
   GraphMaker 2.vcxproj -> C:\Users\Sephirothbahamut\Documents\Programming\VS\Projects\SFML\GraphMaker 2\x64\Release\GraphMaker 2.exe

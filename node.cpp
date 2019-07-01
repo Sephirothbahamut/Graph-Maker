@@ -6,6 +6,7 @@ extern unsigned int debug_depth;
 #define ME "[N-" << this << "]: "
 #endif
 
+
 void graph::node::add_arc_from(arc* a)
 	{
 #ifdef DEBUG_GRAPH_BUILDING
@@ -183,16 +184,12 @@ void graph::node::set_size(float size)
 		}
 	}
 
-void graph::node::change_size(float change)
-	{
-	set_size(sprite.getRadius() + change);
-	}
+void graph::node::change_size(float change) { set_size(sprite.getRadius() + change); }
+
 
 #include <sstream>
-void graph::node::draw(sf::RenderTarget & target, sf::RenderStates states) const
-	{
-	target.draw(sprite);
-	}
+void graph::node::draw(sf::RenderTarget & target, sf::RenderStates states) const { target.draw(sprite); }
+
 
 #include <sstream>
 std::string graph::node::id()
@@ -202,39 +199,24 @@ std::string graph::node::id()
 	}
 
 //personal
-bool graph::node::chk(std::string name)
-	{
-	return(vars.find(name) != vars.end());
-	}
-void graph::node::set(std::string name, double val)
-	{
-	vars[name] = val;
-	}
-double graph::node::get(std::string name)
-	{
-	return(vars[name]);
-	}
-void graph::node::del(std::string name)
-	{
-	vars.erase(name);
-	}
+bool graph::node::chk(std::string name) { return(vars.find(name) != vars.end()); }
+void graph::node::set(std::string name, double val) { vars[name] = val; }
+double graph::node::get(std::string name) { return(vars[name]); }
+void graph::node::del(std::string name) { vars.erase(name); }
 
 //shared
-bool graph::node::shr_chk(std::string name)
-	{
-	return(shared_vars.find(name) != vars.end());
-	}
+bool graph::node::shr_chk(std::string name) { return(owner->shared_nodes_variable_chk(name)); }
 void graph::node::shr_set(std::string name, double val)
 	{
-	shared_vars[name] = val;
+	const std::string* index = &(owner->shared_vars_node.find(name)->first);
+	shared_vars[index] = val;
 	}
 double graph::node::shr_get(std::string name)
 	{
-	return(shared_vars[name]);
-	}
-void graph::node::shr_del(std::string name)
-	{
-	shared_vars.erase(name);
+	const std::string* index = &(owner->shared_vars_node.find(name)->first);
+	return(shared_vars[index]);
 	}
 
+void graph::node::graph_shr_set(const std::string * s, double val) { shared_vars[s] = val; }
+void graph::node::graph_shr_del(const std::string * s) { shared_vars.erase(s); }
 // //// //

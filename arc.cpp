@@ -289,21 +289,19 @@ void graph::arc::del(std::string name)
 	}
 
 //shared
-bool graph::arc::shr_chk(std::string name)
-	{
-	return(shared_vars.find(name) != vars.end());
-	}
+bool graph::arc::shr_chk(std::string name) { return(owner->shared_arcs_variable_chk(name)); }
 void graph::arc::shr_set(std::string name, double val)
 	{
-	shared_vars[name] = val;
+	const std::string* index = &(owner->shared_vars_arc.find(name)->first);
+	shared_vars[index] = val;
 	}
 double graph::arc::shr_get(std::string name)
 	{
-	return(shared_vars[name]);
+	const std::string* index = &(owner->shared_vars_arc.find(name)->first);
+	return(shared_vars[index]);
 	}
-void graph::arc::shr_del(std::string name)
-	{
-	shared_vars.erase(name);
-	}
+
+void graph::arc::graph_shr_set(const std::string * s, double val) { shared_vars[s] = val; }
+void graph::arc::graph_shr_del(const std::string * s) { shared_vars.erase(s); }
 
 // //// //

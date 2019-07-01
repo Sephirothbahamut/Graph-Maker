@@ -165,43 +165,33 @@ bool graph::shared_nodes_variable_chk(std::string var_name)
 
 void graph::shared_nodes_variable_set(std::string var_name, double default_value)
 	{
-	for (node* n : list_node)
-		{
-		n->shr_set(var_name, default_value);
-		}
+	const std::string* index = &(shared_vars_node.find(var_name)->first);
+	for (node* n : list_node) { n->graph_shr_set(index, default_value); }
 	shared_vars_node[var_name] = default_value;
 	}
 
 void graph::shared_nodes_variable_del(std::string var_name)
 	{
-	for (node* n : list_node)
-		{
-		n->shr_del(var_name);
-		}
+	const std::string* index = &(shared_vars_node.find(var_name)->first);
+	for (node* n : list_node) { n->graph_shr_del(index); }
 	shared_vars_node.erase(var_name);
 	}
 
 //arc
-bool graph::shared_arcs_variable_chk(std::string var_name)
-	{
-	return(shared_vars_arc.find(var_name) != shared_vars_arc.end());
-	}
+bool graph::shared_arcs_variable_chk(std::string var_name) { return(shared_vars_arc.find(var_name) != shared_vars_arc.end()); }
+
 
 void graph::shared_arcs_variable_set(std::string var_name, double default_value)
 	{
-	for (arc* a : list_arc)
-		{
-		a->shr_set(var_name, default_value);
-		}
+	const std::string* index = &(shared_vars_arc.find(var_name)->first);
+	for (arc* a : list_arc) { a->graph_shr_set(index, default_value); }
 	shared_vars_arc[var_name] = default_value;
 	}
 
 void graph::shared_arcs_variable_del(std::string var_name)
 	{
-	for (arc* a : list_arc)
-		{
-		a->shr_del(var_name);
-		}
+	const std::string* index = &(shared_vars_arc.find(var_name)->first);
+	for (arc* a : list_arc) { a->graph_shr_del(index); }
 	shared_vars_arc.erase(var_name);
 	}
 

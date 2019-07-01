@@ -32,10 +32,10 @@ void script_console::RegisterScriptGraph(asIScriptEngine * engine)
 	engine->RegisterObjectMethod("graph", "bool remove_arc(arc@ n)", asMETHOD(graph, remove_arc), asCALL_THISCALL);
 
 	engine->RegisterObjectMethod("graph", "bool shr_chk(string var_name)", asMETHOD(graph, shared_nodes_variable_chk), asCALL_THISCALL);
-	engine->RegisterObjectMethod("graph", "void shr_set(string var_name, double = 0)", asMETHOD(graph, shared_nodes_variable_set), asCALL_THISCALL);
+	engine->RegisterObjectMethod("graph", "void shr_set(string var_name, double def = 0)", asMETHOD(graph, shared_nodes_variable_set), asCALL_THISCALL);
 	engine->RegisterObjectMethod("graph", "void shr_del(string var_name)", asMETHOD(graph, shared_nodes_variable_del), asCALL_THISCALL);
 	engine->RegisterObjectMethod("graph", "bool shr_arc_chk(string var_name)", asMETHOD(graph, shared_arcs_variable_chk), asCALL_THISCALL);
-	engine->RegisterObjectMethod("graph", "void shr_arc_set(string var_name, double = 0)", asMETHOD(graph, shared_arcs_variable_set), asCALL_THISCALL);
+	engine->RegisterObjectMethod("graph", "void shr_arc_set(string var_name, double def = 0)", asMETHOD(graph, shared_arcs_variable_set), asCALL_THISCALL);
 	engine->RegisterObjectMethod("graph", "void shr_arc_del(string var_name)", asMETHOD(graph, shared_arcs_variable_del), asCALL_THISCALL);
 
 	engine->RegisterObjectMethod("node", "void set_position(float x, float y)", asMETHODPR(graph::node, set_position, (float, float), void), asCALL_THISCALL);
@@ -53,6 +53,10 @@ void script_console::RegisterScriptGraph(asIScriptEngine * engine)
 	engine->RegisterObjectMethod("node", "void shr_set(string name, double value = 0)", asMETHOD(graph::node, shr_set), asCALL_THISCALL);
 	engine->RegisterObjectMethod("node", "double shr_get(string name)", asMETHOD(graph::node, shr_get), asCALL_THISCALL);
 
+	engine->RegisterObjectMethod("arc", "void swap()", asMETHOD(graph::arc, swap), asCALL_THISCALL);
+	engine->RegisterObjectMethod("arc", "node@ get_from()", asMETHOD(graph::arc, get_from), asCALL_THISCALL);
+	engine->RegisterObjectMethod("arc", "node@ get_to()", asMETHOD(graph::arc, get_to), asCALL_THISCALL);
+
 	engine->RegisterObjectMethod("arc", "string id()", asMETHOD(graph::arc, id), asCALL_THISCALL);
 	engine->RegisterObjectMethod("arc", "bool var_chk(string name)", asMETHOD(graph::arc, chk), asCALL_THISCALL);
 	engine->RegisterObjectMethod("arc", "void var_set(string name, double value = 0)", asMETHOD(graph::arc, set), asCALL_THISCALL);
@@ -61,8 +65,6 @@ void script_console::RegisterScriptGraph(asIScriptEngine * engine)
 	engine->RegisterObjectMethod("arc", "bool shr_chk(string name)", asMETHOD(graph::arc, shr_chk), asCALL_THISCALL);
 	engine->RegisterObjectMethod("arc", "void shr_set(string name, double value = 0)", asMETHOD(graph::arc, shr_set), asCALL_THISCALL);
 	engine->RegisterObjectMethod("arc", "double shr_get(string name)", asMETHOD(graph::arc, shr_get), asCALL_THISCALL);
-	engine->RegisterObjectMethod("arc", "node@ get_from()", asMETHOD(graph::arc, get_from), asCALL_THISCALL);
-	engine->RegisterObjectMethod("arc", "node@ get_to()", asMETHOD(graph::arc, get_to), asCALL_THISCALL);
 
 	engine->RegisterGlobalProperty("graph g", g);
 	}
