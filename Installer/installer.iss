@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "GraphMaker 2"
-#define MyAppVersion "1"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Barnack"
 #define MyAppExeName "GraphMaker 2.exe"
 
